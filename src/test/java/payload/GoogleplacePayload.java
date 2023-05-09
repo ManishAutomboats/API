@@ -23,5 +23,15 @@ public class GoogleplacePayload {
 				+ "}";
 		
 	}
+	
+	public static String updateAddressDetails() {
+		return "\"{\\r\\n\"\r\n"
+				+ "		+ \"\\\"place_id\\\":\\\"\"+placeId+\"\\\",\\r\\n\"\r\n"
+				+ "		+ \"\\\"address\\\":\\\"\"+newAddress+\"\\\",\\r\\n\"\r\n"
+				+ "		+ \"\\\"key\\\":\\\"qaclick123\\\"\\r\\n\"\r\n"
+				+ "		+ \"}\"";
+		
+		
+	}
 
 }

@@ -1,17 +1,14 @@
 package googlePlace;
 
-import io.restassured.RestAssured;
-import io.restassured.path.json.JsonPath;
-import io.restassured.response.Response;
-import payload.GoogleplacePayload;
-
-import static io.restassured.RestAssured.*;
-import static org.hamcrest.Matchers.*;
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static io.restassured.RestAssured.given;
+import static org.hamcrest.Matchers.equalTo;
+import static org.testng.Assert.assertEquals;
 
 import org.testng.annotations.Test;
 
-import groovy.util.logging.Log;
+import io.restassured.RestAssured;
+import io.restassured.path.json.JsonPath;
+import payload.GoogleplacePayload;
 
 public class CreateGoolgePlace {
 
@@ -36,30 +33,31 @@ public class CreateGoolgePlace {
 	String placeId= js.getString("place_id");
 	System.out.println(placeId);
 	
-String status=js.getString("status");
+String status=js.getString("status"); // Actual Result
 System.out.println(status);
 
 assertEquals("OK", status);
 
 
 //Update address
+String newAddress="Noida Sector 62";
 
-//String updateData=given().log().all().queryParam("place_id",placeId).queryParam("key","qaclick123").header("Content-Type","application/json").
-//body("{\r\n"
-//		+ "\"place_id\":"+placeId+",\r\n"
-//		+ "\"address\":\"Test\",\r\n"
-//		+ "\"key\":\"qaclick123\"\r\n"
-//		+ "}").when().put("maps/api/place/update/json").then().assertThat().log().all().statusCode(200).extract().response().asString();
-//
-//    
-//  System.out.println(updateData);
+String updateData=given().log().all().queryParam("key","qaclick123").header("Content-Type","application/json").
+body("{\r\n"
+		+ "\"place_id\":\""+placeId+"\",\r\n"
+		+ "\"address\":\""+newAddress+"\",\r\n"
+		+ "\"key\":\"qaclick123\"\r\n"
+		+ "}").when().put("maps/api/place/update/json").then().assertThat().log().all().statusCode(200).extract().response().asString();
+
+    
+  System.out.println(updateData);
 
 
 
 //GetPlace Details
 
 String getResponse= given().log().all().queryParam("key","qaclick123").queryParam("place_id",placeId).when().get("maps/api/place/get/json").then().
-  assertThat().statusCode(200).extract().response().asString();
+  assertThat().log().all().statusCode(200).extract().response().asString();
  System.out.println(getResponse);
  
 
@@ -67,7 +65,7 @@ String getResponse= given().log().all().queryParam("key","qaclick123").queryPara
   String address=js1.getString("address");
   System.out.println(address);
   
-  assertEquals("29, side layout, cohen 09", address);
+  assertEquals(newAddress, address);
   
   
  String deleteData= given().log().all().queryParam("key","qaclick123").header("Content-Type","application/json").body("{\r\n"
@@ -79,11 +77,6 @@ String getResponse= given().log().all().queryParam("key","qaclick123").queryPara
  
   System.out.println(deleteData);
   
-    
-//    JsonPath js2= new JsonPath(deleteData);
-//   String deleteStatus= js2.getString("status");
-//   
-//   assertEquals("OK", deleteStatus);
  
   
  

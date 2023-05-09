@@ -2,12 +2,12 @@
 <testng-results ignored="0" total="1" passed="1" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2023-05-06T18:33:11 IST" name="Default suite" finished-at="2023-05-06T18:33:16 IST" duration-ms="5023">
+  <suite started-at="2023-05-08T22:27:43 IST" name="Default suite" finished-at="2023-05-08T22:27:55 IST" duration-ms="11408">
     <groups>
     </groups>
-    <test started-at="2023-05-06T18:33:11 IST" name="Default test" finished-at="2023-05-06T18:33:16 IST" duration-ms="5023">
+    <test started-at="2023-05-08T22:27:43 IST" name="Default test" finished-at="2023-05-08T22:27:55 IST" duration-ms="11408">
       <class name="googlePlace.CreateGoolgePlace">
-        <test-method signature="ValidateCreateNewPlace()[pri:0, instance:googlePlace.CreateGoolgePlace@39529185]" started-at="2023-05-06T18:33:12 IST" name="ValidateCreateNewPlace" finished-at="2023-05-06T18:33:16 IST" duration-ms="4961" status="PASS">
+        <test-method signature="ValidateCreateNewPlace()[pri:0, instance:googlePlace.CreateGoolgePlace@39529185]" started-at="2023-05-08T22:27:43 IST" name="ValidateCreateNewPlace" finished-at="2023-05-08T22:27:55 IST" duration-ms="11320" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- ValidateCreateNewPlace -->
